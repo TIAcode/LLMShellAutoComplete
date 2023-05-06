@@ -3,6 +3,8 @@
 Autocomplete using GPT, using data frm atuin command history as input prompt. Uses streaming responses to get the first reply really quickly
 The README is put together in minutes, I fill fix it soon.
 
+![GPT completer in use](gptcomplete.gif)
+
 ## Usage
 ### Nushell
 Add this to config.nu:
