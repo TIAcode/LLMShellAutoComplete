@@ -308,13 +308,15 @@ You have to reply with only the full command lines, do not output anything else.
     logging.info(f"Request tokens: {tokens}")
     if tokens > MAX_TOKENS:
         logging.error(f"Request tokens: {tokens} > {MAX_TOKENS}")
-        subprocess.run(
-            ["dunstify", "-r", str(dunst_id), f"Too many tokens, {tokens} > {MAX_TOKENS}", f"{cwd}\n\n{cmdline}"]
-        )
+        if args.dunst:
+            subprocess.run(
+                ["dunstify", "-r", str(dunst_id), f"Too many tokens, {tokens} > {MAX_TOKENS}", f"{cwd}\n\n{cmdline}"]
+            )
         return
-    subprocess.run(
-        ["dunstify", "-r", str(dunst_id), f"Completing, {tokens} tokens", f"{cwd}\n\n{cmdline}"]
-    )
+    if args.dunst:
+        subprocess.run(
+            ["dunstify", "-r", str(dunst_id), f"Completing, {tokens} tokens", f"{cwd}\n\n{cmdline}"]
+        )
 
     response = await openai.ChatCompletion.acreate(
         model=args.model, messages=prompt, stream=True
@@ -357,9 +359,10 @@ You have to reply with only the full command lines, do not output anything else.
     # result = json.loads(x["choices"][0]["message"]["content"])
     # if result:
     #    break
-    subprocess.run(
-        ["dunstify", "-r", str(dunst_id), f"Completion finished", f"{cmdline}"]
-    )
+    if args.dunst:
+        subprocess.run(
+            ["dunstify", "-r", str(dunst_id), f"Completion finished", f"{cmdline}"]
+        )
     exit()
     result = json.loads(DEBUG_RESULT)
     print("\n".join([x["value"] for x in result]))
