@@ -50,7 +50,7 @@ bind \ck "gpt_completion"
 `--wezterm`: Append screen content from Wezterm
 
 ### Atuin indexes
-This makes a few queries so with bit atuin database few more indexes can speed it up quite a lot:
+This makes a few queries from atuin database so few more indexes can speed it up quite a lot:
 ```
 sqlite3 ~/.local/share/atuin/history.db
 CREATE INDEX idx_history_cwd on history(cwd);
