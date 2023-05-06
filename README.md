@@ -10,6 +10,9 @@ The README is put together in minutes, I fill fix it soon.
 ## Python requirements
 `pip install --user tiktoken openai` should be enough, or you can do venv for them and point the shell configurations to the correct Python.
 
+## Other
+[fzf](https://github.com/junegunn/fzf) for selecting the correct result.
+
 ### Nushell
 Add this to config.nu:
 ```
@@ -39,9 +42,21 @@ bind \ck "gpt_completion"
 
 ### Other parameters
 `--atuin`: atuin history database location
+
 `--dunst`: Use dunstify to notify what's happening (debug mostly)
+
 `--model`: gpt-3.5-turbo or gpt-4. GPT-4 feels much slower for me for this use.
+
 `--wezterm`: Append screen content from Wezterm
+
+### Atuin indexes
+This makes a few queries so with bit atuin database few more indexes can speed it up quite a lot:
+```
+sqlite3 ~/.local/share/atuin/history.db
+CREATE INDEX idx_history_cwd on history(cwd);
+CREATE INDEX idx_history_session on history(session);
+```
+
 
 ### Terminal content (Wezterm/Kitty)
 If you're using [Wezterm](https://github.com/wez/wezterm) you can also add your current terminal screen content to the GPT prompt, which might be useful if there's some error messages that could help generating the correct command line. In that case add -w for the completer.py command line.
