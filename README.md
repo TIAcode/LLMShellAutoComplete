@@ -32,7 +32,7 @@ To config.fish:
 
 ```
 function gpt_completion
-         commandline (python /home/santzes/storage1_backup/projects/wezterm_gpt/completer.py (commandline) | fzf --track --height 8)
+         commandline (python /path/to/completer.py (commandline) | fzf --track --height 8)
 end
 bind \ck "gpt_completion"
 ```
