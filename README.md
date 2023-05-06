@@ -33,6 +33,12 @@ end
 bind \ck "gpt_completion"
 ```
 
+### Other parameters
+--atuin: atuin history database location
+--dunst: Use dunstify to notify what's happening (debug mostly)
+--model: gpt-3.5-turbo or gpt-4. GPT-4 feels much slower for me for this use.
+--wezterm: Append screen content from Wezterm
+
 ### Terminal content (Wezterm/Kitty)
 If you're using [Wezterm](https://github.com/wez/wezterm) you can also add your current terminal screen content to the GPT prompt, which might be useful if there's some error messages that could help generating the correct command line. In that case add -w for the completer.py command line.
 
