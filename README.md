@@ -6,6 +6,10 @@ The README is put together in minutes, I fill fix it soon.
 ![GPT completer in use](gptcomplete.gif)
 
 ## Usage
+
+## Python requirements
+`pip install --user tiktoken openai` should be enough, or you can do venv for them and point the shell configurations to the correct Python.
+
 ### Nushell
 Add this to config.nu:
 ```
